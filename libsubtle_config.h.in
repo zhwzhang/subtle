@@ -1,0 +1,3 @@
+// the configured options and settings for libsutble
+#define libsutble_VERSION_MAJOR @libsutble_VERSION_MAJOR@
+#define libsutble_VERSION_MINOR @libsutble_VERSION_MINOR@
