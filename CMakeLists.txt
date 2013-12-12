@@ -83,6 +83,11 @@ add_executable (example src/example.cc src/subtle.cc ${SourceFiles})
 target_link_libraries(example dl curl zip
   xmlrpc++ xmlrpc_client++ xmlrpc_util xmlrpc)
 
+# example as library
+add_executable (example_using_lib src/example_using_lib.cc)
+target_link_libraries(example_using_lib subtle curl zip
+  xmlrpc++ xmlrpc_client++ xmlrpc_util xmlrpc)
+
 # ctags exuberant
 add_custom_command (TARGET subtle POST_BUILD COMMAND
   ctags --sort=foldcase --c++-kinds=+p --fields=+iaS --extra=+q -f tags
@@ -95,7 +100,7 @@ INSTALL(TARGETS subtle
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   )
-INSTALL(FILES src/subtle.h DESTINATION include)
+INSTALL(FILES src/rpc_impl.h src/subtle.h DESTINATION include)
 set(CPACK_OUTPUT_FILE_PREFIX ${PROJECT_SOURCE_DIR}/build)
 set(CPACK_GENERATOR "DEB")
 set(CPACK_PACKAGE_VERSION_MAJOR ${libsubtle_VERSION_MAJOR})
