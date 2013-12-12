@@ -104,12 +104,12 @@ Building
 
 Subtle uses CMake. You can do various actions
 
-  + subtle              - build the shared library
+  + libsubtle           - build the shared library
+  + subtle              - build the example that downloads subs recursivley for all videos in subfolders
   + cov                 - generate test coverage (requires lcov package installed)
   + doc                 - generate documentation (requires doxygen package installed)
-  + package             - generate debian package of the shared library
+  + package             - generate debian package of the shared library and the subtle binary
   + test                - run tests
-  + example             - build the example that includes subtle from source
   + example_using_lib   - build the example that includes subtle as a library
   + all
 

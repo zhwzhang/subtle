@@ -65,12 +65,12 @@ if(DOXYGEN_FOUND)
 endif(DOXYGEN_FOUND)
 
 # add outputs
-add_library(subtle src/subtle.cc ${SourceFiles})
+add_library(libsubtle src/subtle.cc ${SourceFiles})
 
 # link libs
 include_directories(${GTEST_INCLUDE_DIRS} ${GMOCK_INCLUDE_DIRS})
 
-target_link_libraries(subtle dl zip
+target_link_libraries(libsubtle dl zip
   xmlrpc++ xmlrpc_client++ xmlrpc_util xmlrpc)
 
 target_link_libraries(runTests pthread dl ssl
@@ -80,13 +80,13 @@ target_link_libraries(runTests pthread dl ssl
 # example
 find_package(Boost 1.4.0 COMPONENTS system filesystem regex REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
-add_executable (example src/example.cc src/subtle.cc ${SourceFiles})
-target_link_libraries(example dl zip
+add_executable (subtle src/example.cc src/subtle.cc ${SourceFiles})
+target_link_libraries(subtle dl 
   xmlrpc++ xmlrpc_client++ xmlrpc_util xmlrpc ${Boost_LIBRARIES})
 
 # example as library
 add_executable (example_using_lib src/example_using_lib.cc)
-target_link_libraries(example_using_lib subtle zip
+target_link_libraries(example_using_lib libsubtle zip
   xmlrpc++ xmlrpc_client++ xmlrpc_util xmlrpc)
 
 # ctags exuberant
@@ -96,7 +96,7 @@ add_custom_command (TARGET subtle POST_BUILD COMMAND
   COMMENT "Creating tags" VERBATIM)
 
 # packaging
-INSTALL(TARGETS subtle
+INSTALL(TARGETS libsubtle subtle
   RUNTIME DESTINATION bin
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
