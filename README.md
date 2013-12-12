@@ -10,7 +10,7 @@ Incentive
 
 See src/example.cc. I use the binary like this, in a folder with many video files (think downloads root folder):
 
-  ./subtle eng
+    ./subtle eng
 
 It then recurses, finds all video files, and downloads subtitles for them and puts them in the proper place. Never again shall I spend time on it. You can specity any language on the command line to download subtitles for that language. Use 3 letter codes.
 
