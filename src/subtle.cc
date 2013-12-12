@@ -1,8 +1,8 @@
 #include <inttypes.h>
+#include <sys/stat.h>
 
 #include <cstdio>
 #include <cstring>
-#include <sys/stat.h>
 
 #include <fstream>
 
@@ -38,9 +38,10 @@ extern "C" Subtle::Subtle(XmlRpcClient* client) : client_(client) {
   delete req;
 }
 
-extern "C" vector<SubFile> Subtle::SearchSubtitles(string lang, string hash,
-    double size) {
-  SearchRequest* req = new SearchRequest(lang, hash, size);
+extern "C" vector<SubFile> Subtle::SearchSubtitles(const string& lng,
+                                                   const string& hash,
+                                                   double size) const {
+  SearchRequest* req = new SearchRequest(lng, hash, size);
   SearchResponse res = client_->SearchSubtitles(token_, req);
 
   delete req;
@@ -48,9 +49,9 @@ extern "C" vector<SubFile> Subtle::SearchSubtitles(string lang, string hash,
   return res.data_;
 }
 
-extern "C" void Subtle::DownloadSubtitles(string lang, string hash,
-    double size) {
-  auto search = SearchSubtitles(lang, hash, size);
+extern "C" void Subtle::DownloadSubtitles(const string& lng, const string& hash,
+                                          double size) const {
+  auto search = SearchSubtitles(lng, hash, size);
   DownloadResponse res;
 
   if (!search.empty()) {
@@ -74,7 +75,8 @@ extern "C" void Subtle::DownloadSubtitles(string lang, string hash,
   }
 }
 
-extern "C" void Subtle::DownloadSubtitles(string lng, string file_path) {
+extern "C" void Subtle::DownloadSubtitles(const string& lng,
+                                          const string& file_path) const {
   ifstream f(file_path.c_str());
   if (!f.is_open()) {
     exit(1);
@@ -83,7 +85,7 @@ extern "C" void Subtle::DownloadSubtitles(string lng, string file_path) {
   stat(file_path.c_str(), &filestatus);
   Hasher hasher;
   DownloadSubtitles(lng, hasher.ComputeHashAsString(f),
-                    double(filestatus.st_size));
+                    static_cast<double>(filestatus.st_size));
 }
 
 }  // namespace libsubtle

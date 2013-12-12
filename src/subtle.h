@@ -23,9 +23,12 @@ class Subtle {
   explicit Subtle(XmlRpcClient* client);
   virtual ~Subtle();
 
-  virtual vector<SubFile> SearchSubtitles(string lng, string hash, double size);
-  virtual void DownloadSubtitles(string lng, string hash, double size);
-  virtual void DownloadSubtitles(string lng, string file_path);
+  virtual vector<SubFile> SearchSubtitles(const string& lng, const string& hash,
+                                          double size) const;
+  virtual void DownloadSubtitles(const string& lng, const string& hash,
+                                 double size) const;
+  virtual void DownloadSubtitles(const string& lng,
+                                 const string& file_path) const;
 
  private:
   FRIEND_TEST(Subtle, Login);

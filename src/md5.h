@@ -9,7 +9,7 @@ using std::string;
 
 namespace libsubtle {
 
-string md5(string data) {
+string md5(const string& data) const {
   unsigned char digest[MD5_DIGEST_LENGTH];
 
   MD5((unsigned char*)&data.c_str(), data.lengt(), (unsigned char*)&digest);

@@ -16,7 +16,7 @@ using std::ios;
 
 class Hasher {
  public:
-  MpcHash ComputeHash(ifstream& f) {
+  MpcHash ComputeHash(ifstream& f) const {
     MpcHash hash, fsize;
 
     f.seekg(0, ios::end);
@@ -34,14 +34,14 @@ class Hasher {
     return hash;
   }
 
-  std::string ComputeHashAsString(ifstream& f) {
+  std::string ComputeHashAsString(ifstream& f) const {
     std::stringstream s;
     s << std::setw(16) << std::setfill('0') << std::hex << ComputeHash(f);
     return s.str();
   }
 
  private:
-  int Max(int x, int y) {
+  int Max(int x, int y) const {
     if ((x) > (y)) {
       return x;
     } else {
