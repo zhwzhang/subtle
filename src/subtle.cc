@@ -2,6 +2,7 @@
 
 #include <cstdio>
 #include <cstring>
+#include <sys/stat.h>
 
 #include <fstream>
 
@@ -11,6 +12,7 @@
 
 using std::cout;
 using std::endl;
+using std::ifstream;
 using std::map;
 using std::ofstream;
 using std::pair;
@@ -70,6 +72,18 @@ extern "C" void Subtle::DownloadSubtitles(string lang, string hash,
 
     delete req;
   }
+}
+
+extern "C" void Subtle::DownloadSubtitles(string lng, string file_path) {
+  ifstream f(file_path.c_str());
+  if (!f.is_open()) {
+    exit(1);
+  }
+  struct stat filestatus;
+  stat(file_path.c_str(), &filestatus);
+  Hasher hasher;
+  DownloadSubtitles(lng, hasher.ComputeHashAsString(f),
+                    double(filestatus.st_size));
 }
 
 }  // namespace libsubtle

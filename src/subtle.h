@@ -25,6 +25,7 @@ class Subtle {
 
   virtual vector<SubFile> SearchSubtitles(string lng, string hash, double size);
   virtual void DownloadSubtitles(string lng, string hash, double size);
+  virtual void DownloadSubtitles(string lng, string file_path);
 
  private:
   FRIEND_TEST(Subtle, Login);
