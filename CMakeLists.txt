@@ -3,7 +3,7 @@ project (libsubtle)
 set(libsubtle_VERSION_MAJOR 1)
 set(libsubtle_VERSION_MINOR 0)
 #set(CMAKE_BUILD_TYPE release)
-#set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Debug)
 list(APPEND CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
 #set(MAKE_C_COMPILER clang)
 #set(CMAKE_CXX_COMPILER clang++)
@@ -71,21 +71,21 @@ add_library(subtle src/subtle.cc ${SourceFiles})
 # link libs
 include_directories(${GTEST_INCLUDE_DIRS} ${GMOCK_INCLUDE_DIRS})
 
-target_link_libraries(subtle dl curl zip
+target_link_libraries(subtle dl zip
   xmlrpc++ xmlrpc_client++ xmlrpc_util xmlrpc)
 
-target_link_libraries(runTests pthread dl curl ssl
+target_link_libraries(runTests pthread dl ssl
   xmlrpc++ xmlrpc_client++ xmlrpc_util xmlrpc
   ${GTEST_BOTH_LIBRARIES} ${GMOCK_BOTH_LIBRARIES})
 
 # example
 add_executable (example src/example.cc src/subtle.cc ${SourceFiles})
-target_link_libraries(example dl curl zip
+target_link_libraries(example dl zip
   xmlrpc++ xmlrpc_client++ xmlrpc_util xmlrpc)
 
 # example as library
 add_executable (example_using_lib src/example_using_lib.cc)
-target_link_libraries(example_using_lib subtle curl zip
+target_link_libraries(example_using_lib subtle zip
   xmlrpc++ xmlrpc_client++ xmlrpc_util xmlrpc)
 
 # ctags exuberant
@@ -107,7 +107,7 @@ set(CPACK_PACKAGE_VERSION_MAJOR ${libsubtle_VERSION_MAJOR})
 set(CPACK_PACKAGE_VERSION_MINOR ${libsubtle_VERSION_MINOR})
 set(CPACK_PACKAGE_VERSION_PATCH 0)
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Goran Petrovic")
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.3.1-6), libgcc1 (>= 1:3.4.2-12), curl (>= 7.0), libxmlrpc-c++4 (>= 1.16), libzip2 (>= 0.10)")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.3.1-6), libgcc1 (>= 1:3.4.2-12), libxmlrpc-c++4 (>= 1.16), libzip2 (>= 0.10)")
 set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
 set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "Library for accessing OpenSubtitles.org's XMLRPC API to search, upload and download subtitles.")
 INCLUDE(CPack)
