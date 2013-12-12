@@ -125,8 +125,8 @@ Subtle depends on a few libraries:
 
 Please satify these dependencies on your distribution (varies).
 
-    Ubuntu: apt-get install libzip-dev libxmlrpc-c++-dev
-    Gentoo: emerge libzip xmlrpc-c
+    Ubuntu: apt-get install libzip-dev libxmlrpc-c++-dev lcov
+    Gentoo: emerge libzip xmlrpc-c lcov
 
 Credits
 =======
