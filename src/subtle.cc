@@ -62,12 +62,13 @@ extern "C" void Subtle::DownloadSubtitles(const string& lng, const string& hash,
     res = client_->DownloadSubtitles(token_, req);
 
     if (!res.subtitles_.empty()) {
-      char *tmpname = strdup("/tmp/tmpfileXXXXXX.gz");
-      mkstemp(tmpname);
-      ofstream f(tmpname, ios::out | ios::binary);
+      char temp_file [L_tmpnam];
+      tmpnam(temp_file);
+      ofstream f(temp_file, ios::out | ios::binary);
       f << base64_decode(res.subtitles_[0].second);
-      system(("gunzip -c " + std::string(tmpname) + " > " +
-             search[0].SubFileName_).c_str());
+      // TODO: use libzip, don't be lazy
+      system(("gunzip -c \"" + std::string(temp_file) + "\" > \"" +
+             search[0].SubFileName_ + "\"").c_str());
       cout << "Downloaded subtitle to " << search[0].SubFileName_ << endl;
     }
 
