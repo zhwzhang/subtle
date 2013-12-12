@@ -3,7 +3,7 @@ project (libsubtle)
 set(libsubtle_VERSION_MAJOR 1)
 set(libsubtle_VERSION_MINOR 0)
 #set(CMAKE_BUILD_TYPE release)
-set(CMAKE_BUILD_TYPE Debug)
+#set(CMAKE_BUILD_TYPE Debug)
 list(APPEND CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
 #set(MAKE_C_COMPILER clang)
 #set(CMAKE_CXX_COMPILER clang++)
@@ -77,6 +77,11 @@ target_link_libraries(subtle dl curl zip
 target_link_libraries(runTests pthread dl curl ssl
   xmlrpc++ xmlrpc_client++ xmlrpc_util xmlrpc
   ${GTEST_BOTH_LIBRARIES} ${GMOCK_BOTH_LIBRARIES})
+
+# example
+add_executable (example src/example.cc src/subtle.cc ${SourceFiles})
+target_link_libraries(example dl curl zip
+  xmlrpc++ xmlrpc_client++ xmlrpc_util xmlrpc)
 
 # ctags exuberant
 add_custom_command (TARGET subtle POST_BUILD COMMAND
