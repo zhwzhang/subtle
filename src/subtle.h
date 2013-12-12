@@ -26,9 +26,10 @@ class Subtle {
   virtual vector<SubFile> SearchSubtitles(const string& lng, const string& hash,
                                           double size) const;
   virtual void DownloadSubtitles(const string& lng, const string& hash,
-                                 double size) const;
+                                 double size, const string& dest) const;
   virtual void DownloadSubtitles(const string& lng,
-                                 const string& file_path) const;
+                                 const string& file_path,
+                                 const string& dest) const;
 
  private:
   FRIEND_TEST(Subtle, Login);

@@ -4,6 +4,16 @@ Library for OpenSubtitles.org
 Subtle is a C++ library for downloading subtitles from [OpenSubtitles.org](http://opensubtitles.org/). It implements [OpenSubtitles.org XmlRpc API](http://trac.opensubtitles.org/projects/opensubtitles/wiki/XMLRPC).
 It contains two interfaces, low-level [rpc_impl](https://github.com/stgpetrovic/subtle/blob/master/src/rpc_impl.h) that maps to the OpenSubtitles.org API, and [subtle](https://github.com/stgpetrovic/subtle/blob/master/src/subtle.h) that maps to a higher level API.
 
+
+Incentive
+---------
+
+See src/example.cc. I use the binary like this, in a folder with many video files (think downloads root folder):
+
+  ./subtle eng
+
+It then recurses, finds all video files, and downloads subtitles for them and puts them in the proper place. Never again shall I spend time on it. You can specity any language on the command line to download subtitles for that language. Use 3 letter codes.
+
 User Agent
 ----------
 

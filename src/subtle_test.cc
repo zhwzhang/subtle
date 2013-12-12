@@ -24,7 +24,7 @@ TEST(Subtle, Download) {
   XmlRpcImpl client;
   Subtle s(&client);
   vector<SubFile> result;
-  s.DownloadSubtitles("eng", "7d9cd5def91c9432", 735934464);
+  s.DownloadSubtitles("eng", "7d9cd5def91c9432", 735934464.0f, ".");
 }
 
 TEST(Subtle, SearchFail) {

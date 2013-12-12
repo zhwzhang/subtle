@@ -50,7 +50,8 @@ extern "C" vector<SubFile> Subtle::SearchSubtitles(const string& lng,
 }
 
 extern "C" void Subtle::DownloadSubtitles(const string& lng, const string& hash,
-                                          double size) const {
+                                          double size, const string& dest)
+                                          const {
   auto search = SearchSubtitles(lng, hash, size);
   DownloadResponse res;
 
@@ -68,7 +69,7 @@ extern "C" void Subtle::DownloadSubtitles(const string& lng, const string& hash,
       f << base64_decode(res.subtitles_[0].second);
       // TODO: use libzip, don't be lazy
       system(("gunzip -c \"" + std::string(temp_file) + "\" > \"" +
-             search[0].SubFileName_ + "\"").c_str());
+             dest + "/" + search[0].SubFileName_ + "\"").c_str());
       cout << "Downloaded subtitle to " << search[0].SubFileName_ << endl;
     }
 
@@ -77,7 +78,8 @@ extern "C" void Subtle::DownloadSubtitles(const string& lng, const string& hash,
 }
 
 extern "C" void Subtle::DownloadSubtitles(const string& lng,
-                                          const string& file_path) const {
+                                          const string& file_path,
+                                          const string& dest) const {
   ifstream f(file_path.c_str());
   if (!f.is_open()) {
     exit(1);
@@ -86,7 +88,8 @@ extern "C" void Subtle::DownloadSubtitles(const string& lng,
   stat(file_path.c_str(), &filestatus);
   Hasher hasher;
   DownloadSubtitles(lng, hasher.ComputeHashAsString(f),
-                    static_cast<double>(filestatus.st_size));
+                    static_cast<double>(filestatus.st_size),
+                    dest);
 }
 
 }  // namespace libsubtle

@@ -11,5 +11,5 @@ int main(int argc, char** argv) {
 
   libsubtle::XmlRpcImpl client;
   libsubtle::Subtle s(&client);
-  s.DownloadSubtitles("eng", argv[1]);
+  s.DownloadSubtitles("eng", argv[1], ".");
 }

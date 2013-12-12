@@ -2,8 +2,7 @@ cmake_minimum_required (VERSION 2.6)
 project (libsubtle)
 set(libsubtle_VERSION_MAJOR 1)
 set(libsubtle_VERSION_MINOR 0)
-#set(CMAKE_BUILD_TYPE release)
-set(CMAKE_BUILD_TYPE Debug)
+#set(CMAKE_BUILD_TYPE release) set(CMAKE_BUILD_TYPE Debug)
 list(APPEND CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
 #set(MAKE_C_COMPILER clang)
 #set(CMAKE_CXX_COMPILER clang++)
@@ -79,9 +78,11 @@ target_link_libraries(runTests pthread dl ssl
   ${GTEST_BOTH_LIBRARIES} ${GMOCK_BOTH_LIBRARIES})
 
 # example
+find_package(Boost 1.4.0 COMPONENTS system filesystem regex REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
 add_executable (example src/example.cc src/subtle.cc ${SourceFiles})
 target_link_libraries(example dl zip
-  xmlrpc++ xmlrpc_client++ xmlrpc_util xmlrpc)
+  xmlrpc++ xmlrpc_client++ xmlrpc_util xmlrpc ${Boost_LIBRARIES})
 
 # example as library
 add_executable (example_using_lib src/example_using_lib.cc)
