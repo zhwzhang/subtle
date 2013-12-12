@@ -43,7 +43,7 @@ class SubFile {
   string SubDownloadLink_;
   string ZipDownloadLink_;
 
-  SubFile(map<string, string> data);
+  SubFile(const map<string, string>& data);
 
   void PrintTitle();
   void Print();

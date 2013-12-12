@@ -7,38 +7,38 @@ using std::string;
 
 namespace libsubtle {
 
-SubFile::SubFile(map<string, string> data) {
-  IDSubMovieFile_ = data["IDSubMovieFile"];
-  MovieHash_ = data["MovieHash"];
-  MovieByteSize_ = data["MovieByteSize"];
-  MovieTimeMS_ = data["MovieTimeMS"];
-  IDSubtitleFile_ = data["IDSubtitleFile"];
-  SubFileName_ = data["SubFileName"];
-  SubActualCD_ = data["SubActualCD"];
-  SubSize_ = data["SubSize"];
-  SubHash_ = data["SubHash"];
-  IDSubtitle_ = data["IDSubtitle"];
-  UserID_ = data["UserID"];
-  SubLanguageID_ = data["SubLanguageID"];
-  SubFormat_ = data["SubFormat"];
-  SubSumCD_ = data["SubSumCD"];
-  SubAuthorComment_ = data["SubAuthorComment"];
-  SubAddDate_ = data["SubAddDate"];
-  SubBad_ = data["SubBad"];
-  SubRating_ = data["SubRating"];
-  SubDownloadsCnt_ = data["SubDownloadsCnt"];
-  MovieReleaseName_ = data["MovieReleaseName"];
-  IDMovie_ = data["IDMovie"];
-  IDMovieImdb_ = data["IDMovieImdb"];
-  MovieName_ = data["MovieName"];
-  MovieNameEng_ = data["MovieNameEng"];
-  MovieYear_ = data["MovieYear"];
-  MovieImdbRating_ = data["MovieImdbRating"];
-  UserNickName_ = data["UserNickName"];
-  ISO639_ = data["ISO639"];
-  LanguageName_ = data["LanguageName"];
-  SubDownloadLink_ = data["SubDownloadLink"];
-  ZipDownloadLink_ = data["ZipDownloadLink"];
+SubFile::SubFile(const map<string, string>& data) {
+  IDSubMovieFile_ = data.at("IDSubMovieFile");
+  MovieHash_ = data.at("MovieHash");
+  MovieByteSize_ = data.at("MovieByteSize");
+  MovieTimeMS_ = data.at("MovieTimeMS");
+  IDSubtitleFile_ = data.at("IDSubtitleFile");
+  SubFileName_ = data.at("SubFileName");
+  SubActualCD_ = data.at("SubActualCD");
+  SubSize_ = data.at("SubSize");
+  SubHash_ = data.at("SubHash");
+  IDSubtitle_ = data.at("IDSubtitle");
+  UserID_ = data.at("UserID");
+  SubLanguageID_ = data.at("SubLanguageID");
+  SubFormat_ = data.at("SubFormat");
+  SubSumCD_ = data.at("SubSumCD");
+  SubAuthorComment_ = data.at("SubAuthorComment");
+  SubAddDate_ = data.at("SubAddDate");
+  SubBad_ = data.at("SubBad");
+  SubRating_ = data.at("SubRating");
+  SubDownloadsCnt_ = data.at("SubDownloadsCnt");
+  MovieReleaseName_ = data.at("MovieReleaseName");
+  IDMovie_ = data.at("IDMovie");
+  IDMovieImdb_ = data.at("IDMovieImdb");
+  MovieName_ = data.at("MovieName");
+  MovieNameEng_ = data.at("MovieNameEng");
+  MovieYear_ = data.at("MovieYear");
+  MovieImdbRating_ = data.at("MovieImdbRating");
+  UserNickName_ = data.at("UserNickName");
+  ISO639_ = data.at("ISO639");
+  LanguageName_ = data.at("LanguageName");
+  SubDownloadLink_ = data.at("SubDownloadLink");
+  ZipDownloadLink_ = data.at("ZipDownloadLink");
 }
 
 void SubFile::PrintTitle() {
