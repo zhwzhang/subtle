@@ -90,10 +90,10 @@ target_link_libraries(example_using_lib libsubtle zip
   xmlrpc++ xmlrpc_client++ xmlrpc_util xmlrpc)
 
 # ctags exuberant
-add_custom_command (TARGET subtle POST_BUILD COMMAND
-  ctags --sort=foldcase --c++-kinds=+p --fields=+iaS --extra=+q -f tags
-  ${TagSources}
-  COMMENT "Creating tags" VERBATIM)
+#add_custom_command (TARGET subtle POST_BUILD COMMAND
+#  ctags --sort=foldcase --c++-kinds=+p --fields=+iaS --extra=+q -f tags
+#  ${TagSources}
+#  COMMENT "Creating tags" VERBATIM)
 
 # packaging
 INSTALL(TARGETS libsubtle subtle
