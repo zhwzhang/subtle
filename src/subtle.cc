@@ -5,10 +5,19 @@
 #include <cstring>
 
 #include <fstream>
+#include <iostream>
 
 #include "src/base64.h"
 #include "src/subtle.h"
 #include "src/types.h"
+#include "src/gzstream.h"
+
+const char kPathSeparator =
+#ifdef _WIN32
+    '\\';
+#else
+    '/';
+#endif
 
 using std::cout;
 using std::endl;
@@ -63,14 +72,20 @@ extern "C" void Subtle::DownloadSubtitles(const string& lng, const string& hash,
     res = client_->DownloadSubtitles(token_, req);
 
     if (!res.subtitles_.empty()) {
-      char temp_file [L_tmpnam];
+      char temp_file[L_tmpnam];
       tmpnam(temp_file);
       ofstream f(temp_file, ios::out | ios::binary);
       f << base64_decode(res.subtitles_[0].second);
-      // TODO: use libzip, don't be lazy
-      system(("gunzip -c \"" + std::string(temp_file) + "\" > \"" +
-             dest + "/" + search[0].SubFileName_ + "\"").c_str());
+      igzstream in(temp_file);
+      std::ofstream out(dest + kPathSeparator + search[0].SubFileName_);
+      char c;
+      while ( in.get(c)) {
+        out << c;
+      }
+      in.close();
+      out.close();
       cout << "Downloaded subtitle to " << search[0].SubFileName_ << endl;
+      remove(temp_file);
     }
 
     delete req;

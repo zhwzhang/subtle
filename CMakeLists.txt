@@ -41,7 +41,7 @@ find_package(GMock REQUIRED)
 file(GLOB TestFiles **/*_test.cc)
 
 set(libsubtleSources src/subtle.cc src/hash.h src/rpc_impl.cc
-    src/subfile.cc)
+    src/subfile.cc src/gzstream.C)
 
 file(GLOB TagSources **/*cc **/*h)
 
