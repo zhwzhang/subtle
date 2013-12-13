@@ -14,6 +14,8 @@ See src/example.cc. I use the binary like this, in a folder with many video file
 
 It then recurses, finds all video files, and downloads subtitles for them and puts them in the proper place. You can specify any language on the command line to download subtitles for that language. Use [3 letter codes](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
 
+Wanna try it now? Download the 64bit [deb file](https://raw.github.com/stgpetrovic/subtle/master/libsubtle-1.0,0-Linux.deb) or build it from source (make subtle or make package).
+
 User Agent
 ----------
 
