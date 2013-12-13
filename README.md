@@ -19,7 +19,7 @@ Wanna try it now? Download the 64bit [deb file](https://github.com/stgpetrovic/s
 User Agent
 ----------
 
-OpenSubtitles.org require everyone to use an indentifying user agent string in their applications. Subtles uses 'libsubtle', but each application using it should set its own so it can be identifies. See more [here](http://trac.opensubtitles.org/projects/opensubtitles/wiki/DevReadFirst).
+OpenSubtitles.org require everyone to use an indentifying user agent string in their applications. Subtle uses 'libsubtle', but each application using it should set its own so it can be identified. See more [here](http://trac.opensubtitles.org/projects/opensubtitles/wiki/DevReadFirst).
 
 Low-level interface
 ===================
@@ -41,7 +41,7 @@ Available methods:
 Usage
 -----
 
-Usage is simple, just include the files and use the API. You can use subtle both as a dynamic library or include it from source, and link aproprietly. Please refer to [the example when using subtle from source](https://github.com/stgpetrovic/subtle/blob/master/src/example.cc), or [the example when using subtle as a library](https://github.com/stgpetrovic/subtle/blob/master/src/example_using_library.cc).
+Usage is simple, just include the files and use the API. You can use subtle both as a dynamic library or include it from source, and link appropriately. Please refer to [the example when using subtle from source](https://github.com/stgpetrovic/subtle/blob/master/src/example.cc), or [the example when using subtle as a library](https://github.com/stgpetrovic/subtle/blob/master/src/example_using_library.cc).
 
 The procedure is:
   + Log-in to acquire the session token
@@ -71,8 +71,6 @@ SearchResponse res = client_->SearchSubtitles(token_, req);
 
 See the [header](https://github.com/stgpetrovic/subtle/blob/master/src/rpc_impl.h) for all calls and their documentation.
 
-Required dependencies: zip xmlrpc++ (e.g. in Ubuntu, apt-get install libzip-dev libxmlrpc-c++-dev), but each distribution has their own packages.
-
 High-level interface
 ===================
 
@@ -97,8 +95,6 @@ s.DownloadSubtitles("eng", "/tmp/Hobbit2_3D.HFR.mkv");
 ```
 
 See the [header](https://github.com/stgpetrovic/subtle/blob/master/src/subtle.h) for all calls and their documentation.
-
-Required dependencies: subtle zip xmlrpc++.
 You can either include "src/subtle.h" or you can link against subtle.so and include "subtle.h", as shown in two examples.
 
 Building
