@@ -52,8 +52,8 @@ Namespace assumed is libsubtle::.
 ```c++
 #include "src/rpc_impl.h"
 
-const string Subtle::kServerUrl = "http://api.opensubtitles.org/xml-rpc";
-const string Subtle::kUserAgent = "libsubtle";
+const string kServerUrl = "http://api.opensubtitles.org/xml-rpc";
+const string kUserAgent = "libsubtle";
 
 XmlRpcImpl client;
 
